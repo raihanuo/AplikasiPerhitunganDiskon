@@ -38,8 +38,9 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         textFieldHarga = new javax.swing.JTextField();
         textFieldDiskon = new javax.swing.JTextField();
-        buttonHitung = new javax.swing.JButton();
+        comboBoxDiskon = new javax.swing.JComboBox<>();
         sliderDiskon = new javax.swing.JSlider();
+        buttonHitung = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         textAreaRiwayat = new javax.swing.JTextArea();
 
@@ -54,22 +55,17 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Jumlah Diskon");
+        jLabel4.setText("Jumlah Diskon (%)");
 
         textFieldHarga.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        textFieldHarga.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                textFieldHargaKeyTyped(evt);
-            }
-        });
 
         textFieldDiskon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        buttonHitung.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        buttonHitung.setText("Hitung Diskon");
-        buttonHitung.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonHitungActionPerformed(evt);
+        comboBoxDiskon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        comboBoxDiskon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "10", "20", "30", "40", "50" }));
+        comboBoxDiskon.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBoxDiskonItemStateChanged(evt);
             }
         });
 
@@ -80,6 +76,14 @@ public class NewJFrame extends javax.swing.JFrame {
         sliderDiskon.setPaintTicks(true);
         sliderDiskon.setValue(0);
 
+        buttonHitung.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        buttonHitung.setText("Hitung Diskon");
+        buttonHitung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonHitungActionPerformed(evt);
+            }
+        });
+
         textAreaRiwayat.setEditable(false);
         textAreaRiwayat.setColumns(20);
         textAreaRiwayat.setRows(5);
@@ -89,23 +93,26 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                        .addComponent(sliderDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonHitung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textFieldHarga)
-                            .addComponent(textFieldDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(buttonHitung, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(textFieldDiskon)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(comboBoxDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(sliderDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textFieldHarga))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -120,14 +127,16 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(textFieldDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(sliderDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(sliderDiskon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(comboBoxDiskon)
+                        .addComponent(jLabel4)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonHitung)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,48 +145,54 @@ public class NewJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonHitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHitungActionPerformed
-        if (textFieldHarga.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Masukkan harga terlebih dahulu!");
-        } else {
-            int diskon = sliderDiskon.getValue();
-            double hargaAwal = Double.parseDouble(textFieldHarga.getText()),
-                jumlahDiskon = hargaAwal * diskon / 100,
-                hargaAkhir = hargaAwal - jumlahDiskon;
+        try {
+            if (textFieldHarga.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Masukkan harga terlebih dahulu!");
+            } else {
+                String __ = (String) comboBoxDiskon.getSelectedItem();
+                int comboBox = Integer.valueOf(__);
+                int slider = sliderDiskon.getValue();
+                int diskon = comboBox > slider ? comboBox : slider;
+                double hargaAwal = Double.parseDouble(textFieldHarga.getText()),
+                    jumlahDiskon = hargaAwal * diskon / 100,
+                    hargaAkhir = hargaAwal - jumlahDiskon;
 
-            String kodeDiskon = textFieldDiskon.getText();
-            if (!kodeDiskon.isEmpty()) {
-                jumlahDiskon += 5000;
-                hargaAkhir = hargaAwal - jumlahDiskon;
+                String kodeDiskon = textFieldDiskon.getText();
+                if (!kodeDiskon.isEmpty()) {
+                    jumlahDiskon += 5000;
+                    hargaAkhir = hargaAwal - jumlahDiskon;
+                }
+
+                String hasil = String.format("Harga Akhir : %.2f\nJumlah Penghematan : %.2f\n\n", hargaAkhir, jumlahDiskon);
+                daftarRiwayat.add(hasil);
+                textAreaRiwayat.setText(String.join("", daftarRiwayat));
             }
-
-            String hasil = String.format("Harga Akhir : %.2f\nJumlah Penghematan : %.2f\n\n", hargaAkhir, jumlahDiskon);
-            daftarRiwayat.add(hasil);
-            textAreaRiwayat.setText(String.join("", daftarRiwayat));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Masukkan harga yang valid!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_buttonHitungActionPerformed
 
-    private void textFieldHargaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldHargaKeyTyped
-        char c = evt.getKeyChar();
-        if (!Character.isDigit(c) && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
-            evt.consume();
-            JOptionPane.showMessageDialog(this, "Hanya bisa memasukkan angka!", "Error", JOptionPane.ERROR_MESSAGE);
+    private void comboBoxDiskonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxDiskonItemStateChanged
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            String __ = (String) comboBoxDiskon.getSelectedItem();
+            sliderDiskon.setValue(Integer.valueOf(__));
         }
-    }//GEN-LAST:event_textFieldHargaKeyTyped
+    }//GEN-LAST:event_comboBoxDiskonItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -216,6 +231,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonHitung;
+    private javax.swing.JComboBox<String> comboBoxDiskon;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
