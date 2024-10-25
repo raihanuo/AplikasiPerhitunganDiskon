@@ -7,14 +7,14 @@ Aplikasi Perhitungan Diskon adalah program berbasis Java yang memungkinkan pengg
 - NPM   : 2210010364
 - Kelas : 5B NonReg Banjarmasin
 
-## Fitur Program
+## Fitur
 - Memasukkan harga awal produk.
 - Memilih persentase diskon dari combo box.
 - Mengatur diskon tambahan menggunakan slider.
 - Menambahkan kode diskon untuk diskon tambahan.
 - Menampilkan riwayat penghitungan harga dan diskon.
 
-## Cara Menggunakan Program
+## Cara Menggunakan
 1. Jalankan aplikasi.
 2. Masukkan harga produk di kolom "Masukkan Harga".
 3. Pilih persentase diskon dari dropdown "Kode Diskon".
@@ -27,13 +27,17 @@ Aplikasi Perhitungan Diskon adalah program berbasis Java yang memungkinkan pengg
 - **Java:** Bahasa pemrograman yang digunakan untuk mengembangkan aplikasi.
 - **Java Swing:** Library GUI untuk membangun antarmuka pengguna.
 
-## Keunggulan Program
+## Keunggulan
 - Antarmuka pengguna yang sederhana dan mudah digunakan.
 - Menyediakan riwayat penghitungan, memungkinkan pengguna untuk melacak hasil sebelumnya.
 - Menggunakan komponen GUI yang responsif untuk interaksi yang lebih baik.
 
+## Screenshot
+_Akan ditambahkan nanti_
+
 ## Cara Menjalankan Program
-1. Pastikan Anda memiliki Java Development Kit (JDK) terinstal di komputer Anda.
-2. Clone repositori ini ke komputer Anda:
+1. Pastikan Anda memiliki **Java Development Kit (JDK)** terinstal di sistem Anda.
+2. Clone repositori ini ke mesin lokal Anda.
    ```bash
-   git clone https://github.com/username/repo.git
+   git clone https://github.com/username/repo-name.git
+3. Jalankan aplikasi dengan mengkompilasi dan mengeksekusi file `NewJFrame.java`.
