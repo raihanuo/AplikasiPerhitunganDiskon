@@ -33,7 +33,8 @@ Aplikasi Perhitungan Diskon adalah program berbasis Java yang memungkinkan pengg
 - Menggunakan komponen GUI yang responsif untuk interaksi yang lebih baik.
 
 ## Screenshot
-_Akan ditambahkan nanti_
+![6](https://github.com/user-attachments/assets/21d871e6-9e95-4207-b52f-307c932b42fa)
+![6_](https://github.com/user-attachments/assets/237313ed-feb7-4db5-9785-255a53cdde94)
 
 ## Cara Menjalankan Program
 1. Pastikan Anda memiliki **Java Development Kit (JDK)** terinstal di sistem Anda.
