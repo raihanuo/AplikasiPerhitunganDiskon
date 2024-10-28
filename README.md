@@ -38,5 +38,5 @@ Aplikasi ini adalah program Java berbasis GUI yang memungkinkan pengguna untuk m
 1. Pastikan Anda memiliki **Java Development Kit (JDK)** terinstal di sistem Anda.
 2. Clone repositori ini ke mesin lokal Anda.
    ```bash
-   git clone https://github.com/username/repo-name.git
+   git clone https://github.com/raihanuo/AplikasiPerhitunganDiskon.git
 3. Jalankan aplikasi dengan mengkompilasi dan mengeksekusi file `NewJFrame.java`.
