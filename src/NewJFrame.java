@@ -35,6 +35,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         labelPenghematan = new javax.swing.JLabel();
         labelHargaAkhir = new javax.swing.JLabel();
+        labelRiwayat = new javax.swing.JLabel();
         textFieldHarga = new javax.swing.JTextField();
         textFieldDiskon = new javax.swing.JTextField();
         comboBoxDiskon = new javax.swing.JComboBox<>();
@@ -61,6 +62,9 @@ public class NewJFrame extends javax.swing.JFrame {
 
         labelHargaAkhir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         labelHargaAkhir.setText("Harga Akhir");
+
+        labelRiwayat.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelRiwayat.setText("Riwayat");
 
         textFieldHarga.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
@@ -119,7 +123,8 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelHargaAkhir)
-                            .addComponent(labelPenghematan))
+                            .addComponent(labelPenghematan)
+                            .addComponent(labelRiwayat))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -144,11 +149,13 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(buttonHitung)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelHargaAkhir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelPenghematan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelRiwayat)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -192,7 +199,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
                 labelHargaAkhir.setText("Harga Akhir : " + hargaAkhir);
                 labelPenghematan.setText("Total Penghematan : " + penghematan);
-                String hasil = String.format("Harga Akhir : %.2f\nJumlah Penghematan : %.2f\n\n", hargaAkhir, penghematan);
+                String hasil = String.format("Harga Asli : Rp %.2f\nDiskon : %d%%\nKode Diskon : %s\nHarga Akhir : Rp %.2f\nPenghematan : Rp %.2f\n\n", hargaAwal, diskon, kodeDiskon, hargaAkhir, penghematan);
                 textAreaRiwayat.append(hasil);
             }
         } catch (NumberFormatException e) {
@@ -252,6 +259,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelHargaAkhir;
     private javax.swing.JLabel labelPenghematan;
+    private javax.swing.JLabel labelRiwayat;
     private javax.swing.JSlider sliderDiskon;
     private javax.swing.JTextArea textAreaRiwayat;
     private javax.swing.JTextField textFieldDiskon;
