@@ -1,11 +1,10 @@
-
-import javax.swing.JOptionPane;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -180,37 +179,53 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void buttonHitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHitungActionPerformed
         try {
+            // Memeriksa apakah textFieldHarga kosong
             if (textFieldHarga.getText().isEmpty()) {
+                // Menampilkan pesan kesalahan jika harga tidak dimasukkan
                 JOptionPane.showMessageDialog(this, "Masukkan harga terlebih dahulu!");
             } else {
+                // Mengambil nilai diskon dari comboBox
                 String __ = (String) comboBoxDiskon.getSelectedItem();
-                int comboBox = Integer.valueOf(__);
-                int slider = sliderDiskon.getValue();
+                int comboBox = Integer.valueOf(__); // Mengonversi string ke integer
+                int slider = sliderDiskon.getValue(); // Mengambil nilai dari slider
+                // Menentukan diskon maksimum antara nilai dari comboBox dan slider
                 int diskon = comboBox > slider ? comboBox : slider;
+
+                // Menghitung harga awal, penghematan, dan harga akhir
                 double hargaAwal = Double.parseDouble(textFieldHarga.getText()),
                     penghematan = hargaAwal * diskon / 100,
                     hargaAkhir = hargaAwal - penghematan;
 
+                // Memeriksa apakah kode diskon diinput
                 String kodeDiskon = textFieldDiskon.getText();
                 if (!kodeDiskon.isEmpty()) {
-                    penghematan += 5000;
-                    hargaAkhir = hargaAwal - penghematan;
+                    // Menambahkan penghematan tambahan jika kode diskon ada
+                    penghematan += 5000; 
+                    hargaAkhir = hargaAwal - penghematan; // Menghitung kembali harga akhir
                 }
 
+                // Menampilkan hasil akhir dan penghematan pada label
                 labelHargaAkhir.setText("Harga Akhir : " + hargaAkhir);
                 labelPenghematan.setText("Total Penghematan : " + penghematan);
-                String hasil = String.format("Harga Asli : Rp %.2f\nDiskon : %d%%\nKode Diskon : %s\nHarga Akhir : Rp %.2f\nPenghematan : Rp %.2f\n\n", hargaAwal, diskon, kodeDiskon, hargaAkhir, penghematan);
+
+                // Menformat hasil untuk ditampilkan di textAreaRiwayat
+                String hasil = String.format("Harga Asli : Rp %.2f\nDiskon : %d%%\nKode Diskon : %s\nHarga Akhir : Rp %.2f\nPenghematan : Rp %.2f\n\n", 
+                    hargaAwal, diskon, kodeDiskon, hargaAkhir, penghematan);
+                // Menambahkan hasil ke dalam riwayat
                 textAreaRiwayat.append(hasil);
             }
         } catch (NumberFormatException e) {
+            // Menampilkan pesan kesalahan jika harga tidak valid
             JOptionPane.showMessageDialog(this, "Masukkan harga yang valid!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_buttonHitungActionPerformed
 
     private void comboBoxDiskonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxDiskonItemStateChanged
+        // Memeriksa apakah item pada comboBox terpilih
         if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
-            String __ = (String) comboBoxDiskon.getSelectedItem();
-            sliderDiskon.setValue(Integer.valueOf(__));
+            // Mengambil nilai dari comboBox dan mengatur nilai pada slider
+            String value = (String) comboBoxDiskon.getSelectedItem();
+            sliderDiskon.setValue(Integer.valueOf(value));
         }
     }//GEN-LAST:event_comboBoxDiskonItemStateChanged
 
